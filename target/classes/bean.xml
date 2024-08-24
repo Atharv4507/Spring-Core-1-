@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+        "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+        <bean id="s1" class="com.Sim.AirtelSim"></bean>
+        <bean id="s2" class="com.model.Student" autowire="byType">
+                <property name="details">
+                        <map>
+                                <entry key="hobbies">
+                                        <list>
+                                                <value>reading books</value>
+                                                <value>swimming</value>
+                                                <value>playing football</value>
+                                                <value>travelling</value>
+                                        </list>
+                                </entry>
+                                <entry key="color">
+                                        <list>
+                                                <value>black</value>
+                                                <value>white</value>
+                                                <value>grey</value>
+                                        </list>
+                                </entry>
+                                <entry key="Subject">
+                                        <list>
+                                                <value>Maths</value>
+                                                <value>History</value>
+                                                <value>Science</value>
+                                        </list>
+                                </entry>
+                        </map>
+                </property>
+                <!-- instead of writting Below line You can use Autowire-->
+                <!-- <property name="address" ref="a1"></property>  -->
+        </bean>
+        <bean id="a1" class="com.model.Address">
+                <property name="line1" value="Ganpat Appartment"></property>
+                <property name="line2" value="mangeshnagar"></property>
+                <property name="city" value="pune"></property>
+                <property name="state" value="MH"></property>
+        </bean>
+        <bean id="sd" class="com.dao.StudentDao" autowire="byType">
+                <!-- <property name="j" ref="jd"></property> if autowire not used  -->
+        </bean>
+        <bean id="jd" class="org.springframework.jdbc.core.JdbcTemplate" autowire="byType">
+                <!-- <property name="dataSource" ref="ds"></property> if autowire not used-->
+        </bean>
+        <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql://localhost:3306/jap67"></property>
+                <property name="username" value="root"></property>
+                <property name="password" value="root"></property>
+        </bean>
+</beans>
